@@ -5,4 +5,4 @@ from practico_02.ejercicio_04 import Estudiante
 
 
 def organizar_estudiantes(estudiantes):
-    pass
+    return {est.carrera:len(filter(lambda x: x.carrera==est.carrera, estudiantes)) for est in estudiantes}

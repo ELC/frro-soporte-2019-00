@@ -12,16 +12,29 @@
 
 
 class Persona:
+    last_dni = 1
 
     def __init__(self, nombre, edad, sexo, peso, altura):
-        pass
+        self.nombre = nombre
+        self.edad = edad
+        self.sexo = sexo
+        self.peso = peso
+        self.altura = altura
+        self.dni = self.__generar_dni()
 
     def es_mayor_edad(self):
-        pass
+        return self.edad >= 18
 
     # llamarlo desde __init__
-    def generar_dni(self):
-        pass
-
+    @classmethod
+    def __generar_dni(cls):
+        cls.last_dni = 1
+        return str(cls.last_dni).zfill(8)
+        
     def print_data(self):
-        pass
+        print(f"Información Personal de {self.nombre}")
+        print(f"DNI: {self.dni}")
+        print(f"Edad: {self.edad}")
+        print(f"Sexo: {self.sexo}")
+        print(f"Peso: {self.peso}")
+        print(f"Altura: {self.altura}")
