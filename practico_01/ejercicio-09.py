@@ -7,11 +7,13 @@
 def generar_n_caracteres(n, char):
     return char * n
 
-# Case for n = 0
-assert generar_n_caracteres("h", 0) == ""
+# Testing
 
-# Case for n = 1
-assert generar_n_caracteres("h", 1) == "h"
+def test_zero():
+    assert generar_n_caracteres("h", 0) == ""
 
-# Case for n >= 1
-assert generar_n_caracteres("h", 2) == "hh"
+def test_one():
+    assert generar_n_caracteres("h", 1) == "h"
+
+def test_greater_than_one():
+    assert generar_n_caracteres("h", 2) == "hh"

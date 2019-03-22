@@ -4,11 +4,24 @@
 def inversa(string):
     return string[::-1]
 
-# Case for one character string
-assert inversa("a") == "a"
+# Testing
 
-# Case for even number of characters
-assert inversa("ho") == "oh"
+# Classical
 
-# Case for odd number of characters
-assert inversa("hol") == "loh"
+def test_one_character():
+    assert inversa("a") == "a"
+
+def test_even_characters():
+    assert inversa("ho") == "oh"
+
+def test_odd_characters():
+    assert inversa("hol") == "loh"
+
+# Property Testing
+
+from hypothesis import given
+import hypothesis.strategies as st
+
+@given(st.text())
+def test_identity(text):
+    assert inversa(inversa(text)) == text

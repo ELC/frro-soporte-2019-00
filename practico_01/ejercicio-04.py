@@ -5,12 +5,16 @@
 def is_vocal(char):
     return char.lower() in 'aeiou'
 
-# Case for vowels
-assert is_vocal('a') is True
-assert is_vocal('e') is True
-assert is_vocal('i') is True
-assert is_vocal('o') is True
-assert is_vocal('u') is True
+# Testing
 
-# Case for non-vowels
-assert is_vocal('g') is False
+# Classical
+
+def test_vowel():
+    assert is_vocal('a') is True
+    assert is_vocal('e') is True
+    assert is_vocal('i') is True
+    assert is_vocal('o') is True
+    assert is_vocal('u') is True
+
+def test_non_vowel():
+    assert is_vocal('g') is False

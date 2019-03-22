@@ -1,16 +1,18 @@
 def es_primo(m):
-    if m <= 1:
+    if m <= 2:
         return True
     
     limit = int(m ** 0.5 + 1)
 
-    return not any(m % i == 0 for i in range(2, limit))
+    return not any(m % i == 0 for i in range(3, limit, 2))
 
-# Case for 1
-assert es_primo(1) is True
+# Testing
 
-# Case for prime number
-assert es_primo(17) is True
+def test_one():
+    assert es_primo(1) is True
 
-# Case for non-prime number
-assert es_primo(18) is False
+def test_prime():
+    assert es_primo(17) is True
+
+def test_non_prime():
+    assert es_primo(18) is False

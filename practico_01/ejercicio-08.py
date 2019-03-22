@@ -7,8 +7,10 @@
 def superposicion(xs, ys):
     return len(set(xs) & set(ys)) >= 1
 
-# Case for one or more commmon elements
-assert superposicion([1, 2, 3, 4], [3, 6, 9, 12]) is True
+# Testing
 
-# Case for no common elements
-assert superposicion(list(range(10)), list(range(10, 20))) is False
+def test_common_elements():
+    assert superposicion([1, 2, 3, 4], [3, 6, 9, 12]) is True
+
+def test_no_common_elements():
+    assert superposicion(list(range(10)), list(range(10, 20))) is False

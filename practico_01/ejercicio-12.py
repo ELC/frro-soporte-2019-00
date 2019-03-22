@@ -1,12 +1,14 @@
 def suma(n):
     return sum(range(n+1))
 
-# Case for n = 0
-assert suma(0) == 0
+# Testing
 
-# Case for n = 1
-assert suma(1) == 1
+def test_zero():
+    assert suma(0) == 0
 
-# Case for n >= 0
-assert suma(5) == 15
+def test_one():
+    assert suma(1) == 1
+
+def test_positive():
+    assert suma(5) == 15
 

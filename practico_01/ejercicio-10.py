@@ -5,11 +5,13 @@
 def mas_larga(xs):
     return sorted(xs, key=len, reverse=True)[0] if xs else []
 
-# Case for empty list
-assert mas_larga([]) == []
+# Testing
 
-# Case for one element list
-assert mas_larga(["hola"]) == "hola"
+def test_empty():
+    assert mas_larga([]) == []
 
-# Case for more than one element list
-assert mas_larga(["h", "hola", "esternocleidomastoideo", "adios"]) == "esternocleidomastoideo"
+def test_one_element_list():
+    assert mas_larga(["hola"]) == "hola"
+
+def test_several_element_list():
+    assert mas_larga(["h", "hola", "esternocleidomastoideo", "adios"]) == "esternocleidomastoideo"
