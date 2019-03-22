@@ -9,7 +9,16 @@ class Persona:
 
     # nacimiento es un objeto datetime.datetime
     def __init__(self, nacimiento):
-        self.edad = nacimiento
+        self.nacimiento = nacimiento
 
     def edad(self):
-        return datetime.datetime.st() - self.edad 
+        birth_date = datetime.datetime.strptime(self.nacimiento, '%Y.%m.%d')
+        today = datetime.date.today()
+        years = today.year - birth_date.year
+        
+        age = years
+
+        if not all((x >= y) for x, y in zip(today.timetuple(), birth_date.timetuple())):
+            age = years - 1
+        
+        return age

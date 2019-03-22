@@ -9,9 +9,9 @@
 # - edad_ingreso(): indica que edad tenia al ingresar a la carrera (basándose en el año actual).
 
 import datetime
-from ejercicio_03 import Persona
+from . import ejercicio_03 as ej03
 
-class Estudiante(Persona):
+class Estudiante(ej03.Persona):
 
     def __init__(self, nombre, edad, sexo, peso, altura, carrera, anio, cantidad_materias, cantidad_aprobadas):
         super().__init__(nombre, edad, sexo, peso, altura)
@@ -21,9 +21,9 @@ class Estudiante(Persona):
         self.cantidad_aprobadas = cantidad_aprobadas
 
     def avance(self):
-        return f"{self.cantidad_materias / self.cantidad_aprobadas * 100}%"
+        return f"{self.cantidad_materias / self.cantidad_aprobadas * 100:.4}%"
 
     # implementar usando modulo datetime
     def edad_ingreso(self):
-        return datetime.date.today() - self.anio - self.edad + 1
+        return self.anio + self.edad - datetime.date.today().year
         

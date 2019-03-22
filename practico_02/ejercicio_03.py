@@ -12,7 +12,7 @@
 
 
 class Persona:
-    last_dni = 1
+    last_dni = 0
 
     def __init__(self, nombre, edad, sexo, peso, altura):
         self.nombre = nombre
@@ -28,7 +28,7 @@ class Persona:
     # llamarlo desde __init__
     @classmethod
     def __generar_dni(cls):
-        cls.last_dni = 1
+        cls.last_dni += 1
         return str(cls.last_dni).zfill(8)
         
     def print_data(self):
