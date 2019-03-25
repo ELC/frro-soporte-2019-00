@@ -20,7 +20,9 @@ def buscar_persona(id_persona):
     """
 
     id_, name, birth_date, DNI, altura = execute_query(select_query, (id_persona,))
-    birth_date = datetime.datetime.strptime(birth_date, '%Y-%m-%d %H:%M:%S.%f')
+
+    birth_date = datetime.datetime.strptime(birth_date, '%Y-%m-%d')
+
     
     return id_, name, birth_date, DNI, altura
 

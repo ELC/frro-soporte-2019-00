@@ -16,14 +16,24 @@
 
 import datetime
 
-from practico_03.ejercicio_02 import agregar_persona
-from practico_03.ejercicio_06 import reset_tabla
-from practico_03.ejercicio_07 import agregar_peso
+from ejercicio_02 import agregar_persona
+from ejercicio_06 import reset_tabla
+from ejercicio_07 import agregar_peso
+from ejercicio_01 import execute_query_many, check_exists
 
 
 def listar_pesos(id_persona):
-    return []
 
+    if not check_exists(id_persona):
+        return False
+    
+    select_query = """
+    SELECT fecha, peso
+    FROM Peso
+    WHERE idPersona = ?;
+    """
+    
+    return execute_query_many(select_query, (id_persona,))
 
 @reset_tabla
 def pruebas():

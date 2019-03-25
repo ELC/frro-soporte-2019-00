@@ -3,13 +3,30 @@
 
 import datetime
 
-from practico_03.ejercicio_01 import reset_tabla
-from practico_03.ejercicio_02 import agregar_persona
-from practico_03.ejercicio_04 import buscar_persona
+from ejercicio_01 import reset_tabla, check_exists, execute_query
+from ejercicio_02 import agregar_persona
+from ejercicio_04 import buscar_persona
 
 
 def actualizar_persona(id_persona, nombre, nacimiento, dni, altura):
-    return False
+    
+    if not check_exists(id_persona):
+        return False
+    
+    update_query = """
+    UPDATE Persona
+    SET id = ?, name = ?, birth_date = ?, DNI = ?, altura = ?
+    WHERE id = ?;
+    """
+
+    parameters = (id_persona, 
+                  nombre, 
+                  datetime.datetime.strftime(nacimiento, '%Y-%m-%d'),
+                  dni, 
+                  altura, 
+                  id_persona)
+
+    return execute_query(update_query, parameters)
 
 
 @reset_tabla

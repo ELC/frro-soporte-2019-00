@@ -23,6 +23,15 @@ def execute_query(query, parameters=tuple()):
 
     return result
 
+def execute_query_many(query, parameters=tuple()):
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    with conn:
+        result = cursor.execute(query, parameters).fetchall()
+
+    return result
+
 def get_last_id(query, parameters=tuple()):
     conn = create_connection()
     cursor = conn.cursor()
@@ -74,5 +83,3 @@ def reset_tabla(func):
         func()
         borrar_tabla()
     return func_wrapper
-
-borrar_tabla()

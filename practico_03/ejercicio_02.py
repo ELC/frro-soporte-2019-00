@@ -19,7 +19,7 @@ def agregar_persona(nombre, nacimiento, dni, altura):
     """
 
     data = (nombre, 
-            datetime.datetime.strftime(nacimiento, '%Y-%m-%d %H:%M:%S.%f'),
+            datetime.datetime.strftime(nacimiento, '%Y-%m-%d'),
             dni, 
             altura)
 
