@@ -4,12 +4,25 @@
 
 import datetime
 
-from practico_03.ejercicio_01 import reset_tabla
-from practico_03.ejercicio_02 import agregar_persona
+from ejercicio_01 import reset_tabla, check_exists, execute_query
+from ejercicio_02 import agregar_persona
 
 
 def buscar_persona(id_persona):
-    return False
+    
+    if not check_exists(id_persona):
+        return False
+    
+    select_query = """
+    SELECT id, name, birth_date, DNI, altura
+    FROM Persona
+    WHERE id = ?;
+    """
+
+    id_, name, birth_date, DNI, altura = execute_query(select_query, (id_persona,))
+    birth_date = datetime.datetime.strptime(birth_date, '%Y-%m-%d %H:%M:%S.%f')
+    
+    return id_, name, birth_date, DNI, altura
 
 
 @reset_tabla
