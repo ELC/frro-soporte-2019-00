@@ -2,11 +2,16 @@
 # si tienen al menos 1 elemento en común.
 
 
-# se debe implementar utilizando bucles anidados.
-def superposicion_loop(lista_1, lista_2):
-    pass
+def mas_larga(xs):
+    return sorted(xs, key=len, reverse=True)[0] if xs else []
 
+# Testing
 
-# se debe implementar utilizando conjuntos (sets).
-def superposicion_set(lista_1, lista_2):
-    pass
+def test_empty():
+    assert mas_larga([]) == []
+
+def test_one_element_list():
+    assert mas_larga(["hola"]) == "hola"
+
+def test_several_element_list():
+    assert mas_larga(["h", "hola", "esternocleidomastoideo", "adios"]) == "esternocleidomastoideo"

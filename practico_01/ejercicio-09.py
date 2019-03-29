@@ -4,5 +4,16 @@
 
 # Ejemplos: arenera, radar, ojo, oso, salas.
 # Resolver sin utilizar loops (for/while), sino con slicing.
-def es_palindromo(palabra):
-    pass
+def generar_n_caracteres(n, char):
+    return char * n
+
+# Testing
+
+def test_zero():
+    assert generar_n_caracteres("h", 0) == ""
+
+def test_one():
+    assert generar_n_caracteres("h", 1) == "h"
+
+def test_greater_than_one():
+    assert generar_n_caracteres("h", 2) == "hh"
