@@ -9,12 +9,51 @@
 
 import datetime
 
-from practico_03.ejercicio_02 import agregar_persona
-from practico_03.ejercicio_06 import reset_tabla
+from ejercicio_02 import agregar_persona
+from ejercicio_06 import reset_tabla
+from ejercicio_01 import execute_query, check_exists
 
+
+def get_last_record(id_persona):
+
+    select_query = """
+    SELECT Max(Peso.fecha)
+    FROM Persona
+    JOIN Peso
+        ON Peso.idPersona = Persona.id
+    WHERE Persona.id = ?;
+    """
+
+    last_date = execute_query(select_query, (id_persona,))[0]
+
+    if last_date is None:
+        return None
+
+    last_date = datetime.datetime.strptime(last_date, '%Y-%m-%d')
+    
+    return last_date
 
 def agregar_peso(id_persona, fecha, peso):
-    pass
+    
+    if not check_exists(id_persona):
+        return False
+
+    last_date = get_last_record(id_persona)
+
+    if not last_date is None and fecha < last_date:
+        return False
+    
+    insert_query = """
+    INSERT INTO Peso (idPersona, fecha, peso)
+    VALUES (?, ?, ?);
+    """
+
+    data = (id_persona, 
+            datetime.datetime.strftime(fecha, '%Y-%m-%d'),
+            peso, 
+            )
+
+    return execute_query(insert_query, data) is None
 
 
 @reset_tabla

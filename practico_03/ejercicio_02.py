@@ -3,11 +3,27 @@
 
 import datetime
 
-from practico_03.ejercicio_01 import reset_tabla
+from ejercicio_01 import reset_tabla, get_last_id
 
 
 def agregar_persona(nombre, nacimiento, dni, altura):
-    return 0
+    insert_query = """
+    INSERT INTO Persona (
+        name,
+        birth_date,
+        DNI,
+        altura
+        )
+
+    VALUES ( ?, ?, ?, ?);
+    """
+
+    data = (nombre, 
+            datetime.datetime.strftime(nacimiento, '%Y-%m-%d'),
+            dni, 
+            altura)
+
+    return get_last_id(insert_query, data)
 
 
 @reset_tabla
