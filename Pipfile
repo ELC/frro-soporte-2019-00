@@ -4,11 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-
+sqlalchemy = "*"
 
 [dev-packages]
 pytest = "*"
 hypothesis = "*"
+invoke = "*"
+
+[scripts]
+test = "invoke test"
 
 [requires]
 python_version = "3.6"
